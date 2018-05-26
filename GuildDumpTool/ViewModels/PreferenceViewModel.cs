@@ -27,6 +27,7 @@ namespace GuildDumpTool.ViewModel
         /// </summary>
         public PreferenceViewModel()
         {
+            Console.WriteLine("Lol");
             Title = "Preferences";
             GuildName = Properties.Settings.Default.GuildName;
             if (string.IsNullOrWhiteSpace(GuildName)) GuildName = "Original Gangsters Club";
@@ -37,9 +38,11 @@ namespace GuildDumpTool.ViewModel
                 {
                     if ( !string.IsNullOrWhiteSpace(vZone)) ValidZones.Add(new ZoneModel { ZoneName = vZone.Trim() });
                 }
-            } else
+            }
+            else
             {
                 ValidZones.Add(new ZoneModel { ZoneName = "Plane of Knowledge" });
+                Save();
             }
         }
         public Action CloseAction { get; set; }

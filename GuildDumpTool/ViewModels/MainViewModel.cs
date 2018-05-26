@@ -7,6 +7,7 @@ using GalaSoft.MvvmLight.Ioc;
 using System.IO;
 using System.Linq;
 using System.Windows;
+using GuildDumpTool.Services;
 
 namespace GuildDumpTool.ViewModel
 {
@@ -24,6 +25,7 @@ namespace GuildDumpTool.ViewModel
     /// </summary>
     public class MainViewModel : ViewModelBase
     {
+        private ErrorMessageService fMessageBox = new ErrorMessageService();
         /// <summary>
         /// Initializes a new instance of the MainViewModel class.
         /// </summary>
@@ -139,8 +141,19 @@ namespace GuildDumpTool.ViewModel
             {
                 if (File.Exists(LogFile))
                 {
-                    string[] vArrayOfValidZones = new string[Properties.Settings.Default.ValidZones.Count];
-                    Properties.Settings.Default.ValidZones.CopyTo(vArrayOfValidZones, 0);
+
+                    string[] vArrayOfValidZones = new string[0];
+                    if ( Properties.Settings.Default.ValidZones != null && Properties.Settings.Default.ValidZones.Count >0 )
+                    {
+                        vArrayOfValidZones = new string[Properties.Settings.Default.ValidZones.Count];
+                        Properties.Settings.Default.ValidZones.CopyTo(vArrayOfValidZones, 0);
+                    }
+                    else
+                    {
+                        fMessageBox.ShowMessageBox("Check and make sure you've set your preferences!");
+                        PrefWindow();
+                        return;
+                    }
                     string vOutput = string.Empty;
                     using (StreamReader vStreamReader = new StreamReader(LogFile))
                     {

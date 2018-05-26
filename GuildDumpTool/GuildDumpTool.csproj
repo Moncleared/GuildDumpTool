@@ -141,6 +141,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Services\ErrorMessageService.cs" />
     <Compile Include="ViewModels\PreferenceViewModel.cs" />
     <Compile Include="ViewModels\SelectFileViewModel.cs" />
     <Compile Include="Views\PreferenceView.xaml.cs">
@@ -215,9 +216,7 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Services\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Resource Include="Resources\OGC.ico" />
   </ItemGroup>
