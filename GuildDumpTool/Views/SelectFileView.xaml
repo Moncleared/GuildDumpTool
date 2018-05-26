@@ -1,0 +1,24 @@
+﻿<Window x:Class="GuildDumpTool.Views.SelectFileView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+       xmlns:cmd="clr-namespace:GalaSoft.MvvmLight.Command;assembly=GalaSoft.MvvmLight.Platform"
+        xmlns:local="clr-namespace:GuildDumpTool.Views"
+        mc:Ignorable="d"
+        DataContext="{Binding SelectFile, Source={StaticResource Locator}}"
+        Title="SelectFileView" Height="300" Width="300">
+    <Grid>
+        <DataGrid Grid.Row="1"  IsReadOnly="True" ItemsSource="{Binding ValidZones}" SelectedItem="{Binding FileName}" AutoGenerateColumns="False" Margin="10">
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="MouseDoubleClick">
+                    <cmd:EventToCommand Command="{Binding SelectFileCommand}" />
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Guild Dump Files" Binding="{Binding ZoneName}" Width="200" />
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Window>
