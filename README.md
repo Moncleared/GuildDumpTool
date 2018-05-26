@@ -2,4 +2,4 @@
 Small WPF Application for helping convert guild dumps into raid dumps for EverQuest
 
 # Installation
-https://rawgit.com/Moncleared/OGCBidTool/master/OGCBidTool/publish/publish.htm
+https://rawgit.com/Moncleared/GuildDumpTool/master/GuildDumpTool/publish/publish.htm
